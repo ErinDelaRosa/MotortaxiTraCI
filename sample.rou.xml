@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <vType id="car1" vClass="passenger" maxSpeed="100"/>
+    
+    <flow id="flow1" type="car1" begin="0.00" end="500" from="E5" to="E9" number="100"/>
+    <flow id="flow2" type="car1" begin="0.00" end="500" from="-E9" to="-E5" number="100"/>
+    <flow id="flow3" type="car1" begin="0.00" end="500" from="-E9" to="E8" number="100"/>
+</routes>
