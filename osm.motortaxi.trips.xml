@@ -25,18 +25,8 @@
         <!--<param key="has.taxi.device" value="true"/>-->
     </vType>
     <!-- lcSpeedGain uses the probabilities of 1-Left and 1-Right
-    27662625#1 is glorietta pickup-->
+    Make routes for motortaxi roaming and motortaxi pickup-->
 
-    <trip id="motortaxi_test" type="motortaxi" depart="0.00" departLane="best" from="27661385#1" to="-707358771"/>
-    <!--<trip id="motortaxi0" type="motortaxi" depart="0.00" departLane="best" from="1180378194" to="22729442"/>
-    <trip id="motortaxi1" type="motortaxi" depart="0.36" departLane="best" from="705106530#1" to="86714582#3"/>
-    <trip id="motortaxi2" type="motortaxi" depart="0.72" departLane="best" from="-706803373#1" to="25784325#0"/>
-    <trip id="motortaxi3" type="motortaxi" depart="1.08" departLane="best" from="699945508#1" to="705148056#1"/>
-    <trip id="motortaxi4" type="motortaxi" depart="1.44" departLane="best" from="705369253#0" to="-699945508#0"/>
-    <trip id="motortaxi5" type="motortaxi" depart="1.79" departLane="best" from="54145954#0" to="381895122#1"/>
-    <trip id="motortaxi6" type="motortaxi" depart="2.01" departLane="best" from="22603996#2" to="547662355#3"/>
-    <trip id="motortaxi7" type="motortaxi" depart="2.46" departLane="best" from="17150684#1" to="31091046#2"/>
-    <trip id="motortaxi8" type="motortaxi" depart="2.60" departLane="best" from="951896011" to="4089442#0"/>
-    <trip id="motortaxi9" type="motortaxi" depart="2.89" departLane="best" from="54030371#0" to="701378346#1"/>-->
+    <trip id="motortaxi_test" type="motortaxi" depart="0.00" departLane="best" from="705369253#0" to="-18018451#1"/>
     
 </routes>
