@@ -52,7 +52,9 @@
 -->
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-    <vType id="motorcycle_motorcycle" vClass="motorcycle"/>
+    <vType id="motorcycle_motorcycle" vClass="motorcycle" laneChangeModel="SL2015" 
+    minGap="1" lcSublane="1" lcAssertive=".7" latAlignment="compact" lcStrategic="0" 
+    lcCooperative="0" lcOpposite="5" lcPushy="1" minGapLat="0.6" lcImpatience="1"/>
     <trip id="motorcycle2" type="motorcycle_motorcycle" depart="0.27" departLane="best" departSpeed="max" from="705369253#0" to="-18018451#1"/>
     <trip id="motorcycle4" type="motorcycle_motorcycle" depart="0.53" departLane="best" from="-628759962#1" to="374119556"/>
     <trip id="motorcycle5" type="motorcycle_motorcycle" depart="0.67" departLane="best" departSpeed="max" from="762037983" to="86720809#5"/>

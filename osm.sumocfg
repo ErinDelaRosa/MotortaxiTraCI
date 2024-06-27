@@ -7,7 +7,7 @@
 
     <input>
         <net-file value="osm.net.xml.gz"/>
-        <route-files value="osm.bus.trips.xml,osm.motorcycle.trips.xml,osm.passenger.trips.xml, osm.motortaxi.trips.xml"/> <!--, passengers.rou.xml-->
+        <route-files value="osm.bus.trips.xml,osm.motorcycle.trips.xml,osm.passenger.trips.xml, output.xml"/> <!--, passengers.rou.xml-->
         <additional-files value="osm.poly.xml.gz"/>
         <!-- for Taxi stuff if done
         <no-step-log value="True"/>
@@ -16,7 +16,7 @@
         <device.taxi.idle-algorithm value="randomCircling"/>-->
     </input>
 
-    <lateral-resolution value= ".9"/>
+    <lateral-resolution value= ".8"/>
 
     <processing>
         <ignore-route-errors value="true"/>
