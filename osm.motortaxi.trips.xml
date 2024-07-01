@@ -19,10 +19,10 @@
     
     <!--<route id="route0" edges="303810124 middle end rend"/>-->
 
-    <vType id="motortaxi" vClass="motorcycle" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
+    <vType id="motortaxi" vClass="taxi" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
     minGap="1.5" lcSublane="1.5" lcAssertive=".7" latAlignment="nice" lcStrategic="0" 
     lcKeepRight=".5" lcSpeedGain="0">
-        <!--<param key="has.taxi.device" value="true"/>-->
+        <param key="has.taxi.device" value="true"/>
     </vType>
     <!-- lcSpeedGain uses the probabilities of 1-Left and 1-Right
     Make routes for motortaxi roaming and motortaxi pickup-->

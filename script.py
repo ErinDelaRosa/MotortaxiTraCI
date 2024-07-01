@@ -82,11 +82,19 @@ step = 0
 # while traci.simulation.getMinExpectedNumber() > 0:
 while step <= 1000:
     traci.simulationStep()
-    # test=traci.vehicle.getIDList()
-    # for x in test:
-    #     if x[:9] == "motortaxi":
-    #         print(x)
+    test=traci.vehicle.getIDList()
+    for x in test:
+        if x[:9] == "motortaxi":
+            # print(x)
             # print(traci.vehicle.getParameter(x, "lcAssertive"))
+            traci.vehicle.setLength(x, 2.2)
+            traci.vehicle.setWidth(x, 0.9)
+            traci.vehicle.setHeight(x, 1.5)
+            traci.vehicle.setAccel(x, 6)
+            traci.vehicle.setDecel(x, 10)
+            traci.vehicle.setEmergencyDecel(x, 10)
+            traci.vehicle.setMaxSpeed(x, 200)
+
 
     # traci.vehicle.setVehicleClass
     #changing the motortaxi vehicle properties 
