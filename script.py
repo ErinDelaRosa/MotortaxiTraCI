@@ -82,18 +82,29 @@ step = 0
 # while traci.simulation.getMinExpectedNumber() > 0:
 while step <= 1000:
     traci.simulationStep()
-    test=traci.vehicle.getIDList()
-    for x in test:
-        if x[:9] == "motortaxi":
-            # print(x)
-            # print(traci.vehicle.getParameter(x, "lcAssertive"))
-            traci.vehicle.setLength(x, 2.2)
-            traci.vehicle.setWidth(x, 0.9)
-            traci.vehicle.setHeight(x, 1.5)
-            traci.vehicle.setAccel(x, 6)
-            traci.vehicle.setDecel(x, 10)
-            traci.vehicle.setEmergencyDecel(x, 10)
-            traci.vehicle.setMaxSpeed(x, 200)
+    if step <= 3:
+        test=traci.vehicle.getIDList()
+        for x in test:
+            if x[:9] == "motortaxi":
+                # print(x)
+                # print(traci.vehicle.getParameter(x, "lcAssertive"))
+                traci.vehicle.setLength(x, 2.2)
+                traci.vehicle.setWidth(x, 0.9)
+                traci.vehicle.setHeight(x, 1.5)
+                traci.vehicle.setAccel(x, 6)
+                traci.vehicle.setDecel(x, 10)
+                traci.vehicle.setEmergencyDecel(x, 10)
+                traci.vehicle.setMaxSpeed(x, 200)
+                traci.vehicle.setLine(x, 'taxi')
+
+    fleet = traci.vehicle.getTaxiFleet(0)
+    # print(fleet)
+    reservations = traci.person.getTaxiReservations(1)
+    reservation_ids = [r.id for r in reservations]
+    if reservation_ids:
+        traci.vehicle.dispatchTaxi(fleet[0], reservation_ids[0])
+        # print(traci.vehicle.rerouteEffort(traci.person.getLaneID))
+        # traci.vehicle.rerouteEffort(x, traci.person.getLanePosition)
 
 
     # traci.vehicle.setVehicleClass

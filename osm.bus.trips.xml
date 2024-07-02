@@ -396,7 +396,7 @@
     <trip id="bus504" type="bus_bus" depart="272.05" departLane="best" departSpeed="max" from="571044351#0" to="22648376#4"/>
     <trip id="bus506" type="bus_bus" depart="273.13" departLane="best" departSpeed="max" from="144850884#0" to="704356345#1"/>
     <trip id="bus509" type="bus_bus" depart="274.75" departLane="best" departSpeed="max" from="704887558#0" to="-562968525#0"/>
-    <trip id="bus511" type="bus_bus" depart="275.83" departLane="best" from="22648395#1" to="-738574688#1"/>
+    <!-- <trip id="bus511" type="bus_bus" depart="275.83" departLane="best" from="22648395#1" to="-738574688#1"/>
     <trip id="bus512" type="bus_bus" depart="276.37" departLane="best" from="179384091#2" to="1088980782"/>
     <trip id="bus513" type="bus_bus" depart="276.91" departLane="best" departSpeed="max" from="-4940456#4" to="25794650"/>
     <trip id="bus514" type="bus_bus" depart="277.45" departLane="best" from="-22729195#1" to="25794650"/>
@@ -4224,5 +4224,5 @@
     <trip id="bus6664" type="bus_bus" depart="3597.11" departLane="best" from="-738574688#1" to="-1179636335"/>
     <trip id="bus6665" type="bus_bus" depart="3597.65" departLane="best" departSpeed="max" from="562968525#0" to="547665432#1"/>
     <trip id="bus6668" type="bus_bus" depart="3599.27" departLane="best" departSpeed="max" from="762037983" to="703998740#2"/>
-    <trip id="bus6669" type="bus_bus" depart="3599.81" departLane="best" from="22729197#1" to="705369243#1"/>
+    <trip id="bus6669" type="bus_bus" depart="3599.81" departLane="best" from="22729197#1" to="705369243#1"/> -->
 </routes>

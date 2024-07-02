@@ -19,7 +19,7 @@
     
     <!--<route id="route0" edges="303810124 middle end rend"/>-->
 
-    <vType id="motortaxi" vClass="taxi" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
+    <vType id="motortaxi" vClass="taxi" personCapacity="1" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
     minGap="1.5" lcSublane="1.5" lcAssertive=".7" latAlignment="nice" lcStrategic="0" 
     lcKeepRight=".5" lcSpeedGain="0">
         <param key="has.taxi.device" value="true"/>
@@ -28,7 +28,9 @@
     Make routes for motortaxi roaming and motortaxi pickup-->
 
     <!-- <route id="route0" color="1,1,0" from="7661474" to="86720809#3"/> -->
-    <trip id="motortaxi_test" type="motortaxi" depart="0" color="1,0,0" from="712668428" to="86720809#1"/>
+    <!-- <vehicle id="motortaxi_latest" type="motortaxi" depart="0" color="1,0,0"/> -->
+    <trip id="motortaxi_test1" type="motortaxi" depart="0" color="1,0,0" from="738574701"/>
+    <!-- <trip id="motortaxi_test" type="motortaxi" depart="0" color="1,0,0" from="712668428" to="86720809#1"/>
     <trip id="motortaxi_test1" type="motortaxi" depart="0" color="1,0,0" from="738574701" to="22598001#1"/>
     <trip id="motortaxi_test2" type="motortaxi" depart="0" color="1,0,0" from="27661429#1" to="22598114#3"/>
     <trip id="motortaxi_test3" type="motortaxi" depart="0" color="1,0,0" from="-22604033#2" to="27661429#1"/>
@@ -36,7 +38,12 @@
     <trip id="motortaxi_test5" type="motortaxi" depart="0" color="1,0,0" from="712411951" to="38319207"/>
     <trip id="motortaxi_test6" type="motortaxi" depart="0" color="1,0,0" from="-22604033#1" to="712411951"/>
     <trip id="motortaxi_test7" type="motortaxi" depart="0" color="1,0,0" from="31661773#2" to="4086409#2"/>
-    <trip id="motortaxi_test8" type="motortaxi" depart="0" color="1,0,0" from="22729201#1" to="701612812#0"/>
+    <trip id="motortaxi_test8" type="motortaxi" depart="0" color="1,0,0" from="22729201#1" to="701612812#0"/> -->
+
+    <person id="HeadingBusstop1" depart="0.00" color="green">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="132684530#2" lines="taxi"/>
+    </person>
 
 
     <!-- <trip id="motortaxi_test" type="motortaxi" depart="0.00" departLane="best" from="705369253#0" to="-18018451#1"/> -->
