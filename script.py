@@ -1,6 +1,9 @@
 # Documentation link: https://sumo.dlr.de/docs/TraCI/Interfacing_TraCI_from_Python.html
 import os
 import sys
+
+import traci._vehicle
+import traci._vehicletype
 if 'SUMO_HOME' in os.environ:
     sys.path.append(sys.path.append(os.path.join(os.environ['SUMO_HOME'], 'tools')))
 else:
@@ -8,6 +11,31 @@ else:
 import traci
 
 from hmm import model
+
+print(model.transmat_)
+print(model.emissionprob_)
+
+left = model.emissionprob_[0][4]
+right = model.emissionprob_[0][5]
+
+speedGain = left + right
+
+import xml.etree.ElementTree as ET
+tree = ET.parse('osm.motortaxi.trips.xml')
+root = tree.getroot()
+
+# for x in root:
+#     print(x.tag, x.attrib)
+
+print (root[0].attrib["lcSpeedGain"])
+
+root[0].set("lcSpeedGain", str(speedGain))
+
+print (root[0].attrib["lcSpeedGain"])
+# root[0].attrib["lcSpeedGain"] = speedGain
+
+tree.write('output.xml')
+
 
 sumoBinary = "sumo-gui"
 sumoCmd = [sumoBinary, "-c", "osm.sumocfg", "-d", "200"] #replace osm.sumocfg to your cfg file
@@ -43,17 +71,6 @@ sumoCmd = [sumoBinary, "-c", "osm.sumocfg", "-d", "200"] #replace osm.sumocfg to
 #    for i, val in enumerate(peopleWaiting):
 #        traci.vehicle.dispatchTaxi(fleet[i], pickup[i])
 
-print(model.transmat_)
-print(model.emissionprob_)
-
-left = model.emissionprob_[0][4]
-right = model.emissionprob_[0][5]
-
-speedGain = left + right
-print(left)
-print(right)
-print(left + right)
-
 #motortaxi details
 #<vType id="motortaxi" vClass="motorcycle" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
 #    minGap="1.5" lcSublane="1.5" lcAssertive=".1" latAlignment="nice" lcStrategic="0" lcSpeedGain="0.606" 
@@ -62,10 +79,56 @@ print(left + right)
 
 traci.start(sumoCmd)
 step = 0
+queue = []
 # while traci.simulation.getMinExpectedNumber() > 0:
 while step <= 1000:
     traci.simulationStep()
+    if step <= 3:
+        test=traci.vehicle.getIDList()
+        for x in test:
+            if x[:9] == "motortaxi":
+                # print(x)
+                # print(traci.vehicle.getParameter(x, "lcAssertive"))
+                traci.vehicle.setLength(x, 2.2)
+                traci.vehicle.setWidth(x, 0.9)
+                traci.vehicle.setHeight(x, 1.5)
+                traci.vehicle.setAccel(x, 6)
+                traci.vehicle.setDecel(x, 10)
+                traci.vehicle.setEmergencyDecel(x, 10)
+                traci.vehicle.setMaxSpeed(x, 200)
+                traci.vehicle.setLine(x, 'taxi')
+                
+    fleet = traci.vehicle.getTaxiFleet(0)
+    we = traci.person.getTaxiReservations(1)
+    print(we)
+    print("Available ", fleet)
+    print(bool(queue))
+    print(bool(fleet))
+    print(len(we))
+    if queue and fleet:
+        traci.vehicle.dispatchTaxi(fleet[0], queue[0])
+    elif we and fleet:
+        print("hello")
+        reservation_ids = [r.id for r in we]
+        traci.vehicle.dispatchTaxi(fleet[0], reservation_ids[0])
+    elif we and not fleet:
+        if not queue:
+            print("hi")
+            queue = [r.id for r in we]
+        else:
+            queue.append([r.id for r in we])
+
+
     
+
+
+    # reservations = traci.person.getTaxiReservations(1)
+    # reservation_ids = [r.id for r in reservations]
+    # if reservation_ids and fleet:
+    #     traci.vehicle.dispatchTaxi(fleet[0], reservation_ids[0]
+
+
+    # traci.vehicle.setVehicleClass
     #changing the motortaxi vehicle properties 
     #traci.vehicle.setLaneChangeMode("motortaxi_test", 0b010101100101)
     #traci.vehicle.setParameter("motortaxi_test", changeSublane, 1.5)
