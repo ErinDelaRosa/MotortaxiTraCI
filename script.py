@@ -79,6 +79,7 @@ sumoCmd = [sumoBinary, "-c", "osm.sumocfg", "-d", "200"] #replace osm.sumocfg to
 
 traci.start(sumoCmd)
 step = 0
+queue = []
 # while traci.simulation.getMinExpectedNumber() > 0:
 while step <= 1000:
     traci.simulationStep()
@@ -96,15 +97,35 @@ while step <= 1000:
                 traci.vehicle.setEmergencyDecel(x, 10)
                 traci.vehicle.setMaxSpeed(x, 200)
                 traci.vehicle.setLine(x, 'taxi')
-
+                
     fleet = traci.vehicle.getTaxiFleet(0)
-    # print(fleet)
-    reservations = traci.person.getTaxiReservations(1)
-    reservation_ids = [r.id for r in reservations]
-    if reservation_ids:
+    we = traci.person.getTaxiReservations(1)
+    print(we)
+    print("Available ", fleet)
+    print(bool(queue))
+    print(bool(fleet))
+    print(len(we))
+    if queue and fleet:
+        traci.vehicle.dispatchTaxi(fleet[0], queue[0])
+    elif we and fleet:
+        print("hello")
+        reservation_ids = [r.id for r in we]
         traci.vehicle.dispatchTaxi(fleet[0], reservation_ids[0])
-        # print(traci.vehicle.rerouteEffort(traci.person.getLaneID))
-        # traci.vehicle.rerouteEffort(x, traci.person.getLanePosition)
+    elif we and not fleet:
+        if not queue:
+            print("hi")
+            queue = [r.id for r in we]
+        else:
+            queue.append([r.id for r in we])
+
+
+    
+
+
+    # reservations = traci.person.getTaxiReservations(1)
+    # reservation_ids = [r.id for r in reservations]
+    # if reservation_ids and fleet:
+    #     traci.vehicle.dispatchTaxi(fleet[0], reservation_ids[0]
 
 
     # traci.vehicle.setVehicleClass
