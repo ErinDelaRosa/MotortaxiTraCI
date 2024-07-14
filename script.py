@@ -19,6 +19,7 @@ left = model.emissionprob_[0][4]
 right = model.emissionprob_[0][5]
 
 speedGain = left + right
+pushy = model.emissionprob_[0][2] + model.emissionprob_[0][3]
 
 import xml.etree.ElementTree as ET
 tree = ET.parse('osm.motortaxi.trips.xml')
@@ -32,6 +33,12 @@ print (root[0].attrib["lcSpeedGain"])
 root[0].set("lcSpeedGain", str(speedGain))
 
 print (root[0].attrib["lcSpeedGain"])
+
+print (root[0].attrib["lcPushy"])
+
+root[0].set("lcPushy", str(pushy))
+
+print (root[0].attrib["lcPushy"])
 # root[0].attrib["lcSpeedGain"] = speedGain
 
 tree.write('output.xml')

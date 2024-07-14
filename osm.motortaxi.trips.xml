@@ -22,7 +22,7 @@
     <vType id="motortaxi" vClass="taxi" personCapacity="1" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
     minGap="1" length="2.0" width=".7" height="1.1" 
     lcSublane="1.5" lcAssertive="1" latAlignment="nice" lcStrategic="0" 
-    lcKeepRight=".5" lcSpeedGain="0" lcPushy=".75" lcSigma=".5" lcLookaheadLeft="0">
+    lcKeepRight=".5" lcSpeedGain="0" lcPushy="0" lcSigma=".5" lcLookaheadLeft="0">
         <param key="has.taxi.device" value="true"/>
         <param key="device.taxi.dropOffDuration" value="5"/>
     </vType>
