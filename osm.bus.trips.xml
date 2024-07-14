@@ -54,7 +54,7 @@
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     <vType id="bus_bus" vClass="bus" />
-
+<!--
     <trip id="bus0" type="bus_bus" depart="0.00" departLane="best" departSpeed="max" from="552769056" to="-109033611#0"/>
     <trip id="bus2" type="bus_bus" depart="1.08" departLane="best" from="-645172765#0" to="547665432#1"/>
     <trip id="bus5" type="bus_bus" depart="2.70" departLane="best" from="706054788#0" to="25794650"/>
@@ -429,7 +429,7 @@
     <trip id="bus552" type="bus_bus" depart="297.96" departLane="best" departSpeed="max" from="-570477020" to="-4940470"/>
     <trip id="bus553" type="bus_bus" depart="298.50" departLane="best" from="761304863#4" to="25784325#1"/>
     <trip id="bus554" type="bus_bus" depart="299.04" departLane="best" from="-712684280#0" to="-22729184#0"/>
-    <trip id="bus555" type="bus_bus" depart="299.58" departLane="best" departSpeed="max" from="-22648376#4" to="705241296#4"/>
+    <trip id="bus555" type="bus_bus" depart="299.58" departLane="best" departSpeed="max" from="-22648376#4" to="705241296#4"/>-->
 
     <!--<trip id="bus556" type="bus_bus" depart="300.12" departLane="best" departSpeed="max" from="-22729190#1" to="701644612"/>
     <trip id="bus557" type="bus_bus" depart="300.66" departLane="best" departSpeed="max" from="704887558#0" to="706191003#0"/>

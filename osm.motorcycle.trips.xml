@@ -54,8 +54,9 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     <vType id="motorcycle_motorcycle" vClass="motorcycle" laneChangeModel="SL2015" 
     minGap="1" length="2.0" width=".7" height="1.1" 
-    lcSublane="1" lcAssertive=".7" latAlignment="compact" lcStrategic="0" 
-    lcCooperative="0" lcOpposite="5" lcPushy="1" minGapLat="0.6" lcImpatience="1"/>
+    lcSublane="1" lcAssertive="1" latAlignment="compact" lcStrategic="-1" 
+    lcCooperative="0" lcOpposite="5" lcPushy="1" minGapLat="0.6" lcImpatience="1" lcSigma=".5"
+    lcLookaheadLeft="0" lcSpeedGainRight="1" lcSpeedGain="1"/>
 
     <trip id="motorcycle2" type="motorcycle_motorcycle" depart="0.27" departLane="best" departSpeed="max" from="705369253#0" to="-18018451#1"/>
     <trip id="motorcycle4" type="motorcycle_motorcycle" depart="0.53" departLane="best" from="-628759962#1" to="374119556"/>

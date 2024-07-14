@@ -83,7 +83,7 @@ queue = []
 # while traci.simulation.getMinExpectedNumber() > 0:
 while step <= 5000:
     traci.simulationStep()
-    if step <= 3:
+    if step <= 100:
         test=traci.vehicle.getIDList()
         for x in test:
             if x[:9] == "motortaxi":
