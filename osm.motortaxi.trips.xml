@@ -20,7 +20,8 @@
     <!--<route id="route0" edges="303810124 middle end rend"/>-->
 
     <vType id="motortaxi" vClass="taxi" personCapacity="1" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
-    minGap="1.5" lcSublane="1.5" lcAssertive=".7" latAlignment="nice" lcStrategic="0" 
+    minGap="1" length="2.0" width=".7" height="1.1" 
+    lcSublane="1.5" lcAssertive=".7" latAlignment="nice" lcStrategic="0" 
     lcKeepRight=".5" lcSpeedGain="0">
         <param key="has.taxi.device" value="true"/>
         <param key="device.taxi.dropOffDuration" value="5"/>
@@ -33,6 +34,9 @@
     <vehicle id="motortaxi1" type="motortaxi" depart="0" color="1,0,0">
         <route edges="712668428"/>
     </vehicle>
+    <vehicle id="motortaxi2" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="28573721#2"/>
+    </vehicle>
     <!-- <trip id="motortaxi2" type="motortaxi" depart="0" color="1,0,0" from="132684527#6"/> -->
     <!-- <trip id="motortaxi_test" type="motortaxi" depart="0" color="1,0,0" from="712668428" to="86720809#1"/>
     <trip id="motortaxi_test1" type="motortaxi" depart="0" color="1,0,0" from="738574701" to="22598001#1"/>
@@ -43,7 +47,7 @@
     <trip id="motortaxi_test6" type="motortaxi" depart="0" color="1,0,0" from="-22604033#1" to="712411951"/>
     <trip id="motortaxi_test7" type="motortaxi" depart="0" color="1,0,0" from="31661773#2" to="4086409#2"/>
     <trip id="motortaxi_test8" type="motortaxi" depart="0" color="1,0,0" from="22729201#1" to="701612812#0"/> -->
-
+    <!-- glorietta 2 -->
     <person id="passenger1" depart="0.00" color="blue">
         <walk from="27662625#1" busStop="bs_0"/>
         <ride from="27662625#1" to="132684530#2" lines="taxi"/>
@@ -52,8 +56,16 @@
         <walk from="27662625#1" busStop="bs_0"/>
         <ride from="27662625#1" to="22598132#2" lines="taxi"/>
     </person>
+    <!-- glorietta 4 -->
+    <person id="passenger3" depart="60.00" color="blue">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="705241293" lines="taxi"/>
+    </person>
+    <!-- sm makati -->
+    <person id="passenger4" depart="70.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="31091043#1" lines="taxi"/>
+    </person>
 
-
-    <!-- <trip id="motortaxi_test" type="motortaxi" depart="0.00" departLane="best" from="705369253#0" to="-18018451#1"/> -->
     
 </routes>

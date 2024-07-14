@@ -81,21 +81,20 @@ traci.start(sumoCmd)
 step = 0
 queue = []
 # while traci.simulation.getMinExpectedNumber() > 0:
-while step <= 1000:
+while step <= 5000:
     traci.simulationStep()
     if step <= 3:
         test=traci.vehicle.getIDList()
         for x in test:
             if x[:9] == "motortaxi":
                 # print(x)
-                # print(traci.vehicle.getParameter(x, "lcAssertive"))
-                traci.vehicle.setLength(x, 2.2)
-                traci.vehicle.setWidth(x, 0.9)
-                traci.vehicle.setHeight(x, 1.5)
+                traci.vehicle.setLength(x, 2.0)
+                traci.vehicle.setWidth(x, 0.7)
+                traci.vehicle.setHeight(x, 1.1)
                 traci.vehicle.setAccel(x, 6)
                 traci.vehicle.setDecel(x, 10)
                 traci.vehicle.setEmergencyDecel(x, 10)
-                traci.vehicle.setMaxSpeed(x, 200)
+                traci.vehicle.setMaxSpeed(x, 60)
                 traci.vehicle.setLine(x, 'taxi')
                 
     fleet = traci.vehicle.getTaxiFleet(0)
