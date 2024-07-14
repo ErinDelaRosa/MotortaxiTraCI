@@ -25,11 +25,12 @@ model.startprob_ = state_probability
 model.transmat_ = transition_probability
 model.emissionprob_ = emission_probability
 
-observations_sequence = np.array([0,1,4,3,2,0,1,0,1,2,3,3,4,4,3,4,5,5,3,0,1,4,4,4,5,4,4,5,5,5,2,2,3,3,2,5,3,4,4,5,4,5,0,1,2,3]).reshape(-1, 1)
-observations_sequence
+from labelencoding import final_sequence
+
+observations_sequence = final_sequence.reshape(-1, 1)
 model.fit(observations_sequence)
 model.predict(observations_sequence)
-print(model.score(observations_sequence))
+print(model.score(observations_sequence,[14,11,28,43,46,37,119,27,89]))
 
 print(model.transmat_)
 print(model.emissionprob_)
