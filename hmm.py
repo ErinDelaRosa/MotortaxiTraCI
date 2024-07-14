@@ -20,7 +20,7 @@ emission_probability= np.array([
     [0.944,0.056,0,0,0,0]
 ])
 
-model = hmm.MultinomialHMM(n_components=n_states)
+model = hmm.CategoricalHMM(n_components=n_states, n_features=n_observations)
 model.startprob_ = state_probability
 model.transmat_ = transition_probability
 model.emissionprob_ = emission_probability
