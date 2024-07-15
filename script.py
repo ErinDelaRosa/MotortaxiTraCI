@@ -106,23 +106,55 @@ while step <= 5000:
                 
     fleet = traci.vehicle.getTaxiFleet(0)
     we = traci.person.getTaxiReservations(1)
-    print(we)
+
+    # Logging
+    # ongoing = traci.vehicle.getTaxiFleet(2)
+    # motortaxi = traci.vehicle.getIDList()
+    # for x in motortaxi:
+    #     if x[:9] == "motortaxi":
+    #         for y in ongoing:
+    #             if x == y:
+    #                 print(x, " ")
+    #                 print("Lateral Lane Pos: ", traci.vehicle.getLateralLanePosition(x))
+    #                 print("Lane ID: ",traci.vehicle.getLaneID(x))
+    #                 print("Lane Index: ",traci.vehicle.getLaneIndex(x))
+
+
+    # print(we)
     print("Available ", fleet)
-    print(bool(queue))
-    print(bool(fleet))
-    print(len(we))
+    print(queue)
     if queue and fleet:
-        traci.vehicle.dispatchTaxi(fleet[0], queue[0])
-    elif we and fleet:
-        print("hello")
-        reservation_ids = [r.id for r in we]
-        traci.vehicle.dispatchTaxi(fleet[0], reservation_ids[0])
-    elif we and not fleet:
-        if not queue:
-            print("hi")
-            queue = [r.id for r in we]
-        else:
-            queue.append([r.id for r in we])
+        driver = None
+        lowestDistance = 0
+        # area = None
+        winner = None
+        # list = []
+        # for i in queue:
+        #     if traci.person.getRoadID(i.persons[0]) not in list:
+        #         list.append(traci.person.getRoadID(i.persons[0]))
+        for j in fleet:
+            if driver == None:
+                driver = j
+            for i in queue:
+                # if area == None:
+                #     area = traci.person.getRoadID(i.persons[0])
+                distance = traci.simulation.getDistanceRoad(traci.vehicle.getRoadID(j),traci.vehicle.getLanePosition(j),traci.person.getRoadID(i.persons[0]),traci.person.getLanePosition(i.persons[0]))
+                print("From vehicle ", j, " to ", i.persons[0], " Distance: ", distance)
+
+                if lowestDistance == 0:
+                    lowestDistance = distance
+                    winner = i
+                # print(distance, "<= ", lowestDistance)
+                if distance < lowestDistance:
+                    winner = i
+                    driver = j
+
+
+        traci.vehicle.dispatchTaxi(driver, winner.id)
+        queue.remove(winner)
+    if we:
+        for i in we:
+            queue.append(i)
 
 
     

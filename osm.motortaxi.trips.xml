@@ -38,13 +38,13 @@
         671307953#0 671307953#1 702465338#1 114695854#1 108060096#1 108060096#2 676674453 132684529#0
         31661773#1 31661773#2 39077073#1 38062536#0 38062536#1 38062536#2"/>
     </vehicle>
-    <!--
-    <vehicle id="motortaxi1" type="motortaxi" depart="0" color="1,0,0">
+    
+    <!-- <vehicle id="motortaxi1" type="motortaxi" depart="0" color="1,0,0">
         <route edges="712668428"/>
     </vehicle>
     <vehicle id="motortaxi2" type="motortaxi" depart="0" color="1,0,0">
-        <route edges="28573721#2"/>
-    </vehicle>-->
+        <route edges="27831120"/>
+    </vehicle> -->
     <!-- <trip id="motortaxi2" type="motortaxi" depart="0" color="1,0,0" from="132684527#6"/> -->
     <!-- <trip id="motortaxi_test" type="motortaxi" depart="0" color="1,0,0" from="712668428" to="86720809#1"/>
     <trip id="motortaxi_test1" type="motortaxi" depart="0" color="1,0,0" from="738574701" to="22598001#1"/>
@@ -56,19 +56,19 @@
     <trip id="motortaxi_test7" type="motortaxi" depart="0" color="1,0,0" from="31661773#2" to="4086409#2"/>
     <trip id="motortaxi_test8" type="motortaxi" depart="0" color="1,0,0" from="22729201#1" to="701612812#0"/> -->
     <!-- glorietta 2 -->
-    <!--<person id="passenger1" depart="0.00" color="blue">
+    <!-- <person id="passenger1" depart="0.00" color="blue" departPos="48">
         <walk from="27662625#1" busStop="bs_0"/>
         <ride from="27662625#1" to="132684530#2" lines="taxi"/>
-    </person>
-    <person id="passenger2" depart="30.00" color="blue">
+    </person> -->
+    <!-- <person id="passenger2" depart="30.00" color="blue">
         <walk from="27662625#1" busStop="bs_0"/>
         <ride from="27662625#1" to="22598132#2" lines="taxi"/>
-    </person>-->
+    </person> -->
     <!-- glorietta 4 -->
-    <!--<person id="passenger3" depart="60.00" color="blue">
+    <!-- <person id="passenger2" depart="0.00" color="blue" departPos="11">
         <walk from="27831120" busStop="bs_1"/>
         <ride from="27831120" to="705241293" lines="taxi"/>
-    </person>-->
+    </person> -->
     <!-- sm makati -->
     <!--<person id="passenger4" depart="70.00" color="blue">
         <walk from="712682734" busStop="bs_2"/>

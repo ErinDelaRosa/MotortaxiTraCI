@@ -25,12 +25,13 @@ model.startprob_ = state_probability
 model.transmat_ = transition_probability
 model.emissionprob_ = emission_probability
 
-from labelencoding import final_sequence
+from labelencoding import final_sequence, final_v_sequences
 
 observations_sequence = final_sequence.reshape(-1, 1)
 model.fit(observations_sequence)
 model.predict(observations_sequence)
 print(model.score(observations_sequence,[14,11,28,43,46,37,119,27,89]))
+print(model.score(final_v_sequences.reshape(-1,1),[27,84,111,42]))
 
 print(model.transmat_)
 print(model.emissionprob_)
