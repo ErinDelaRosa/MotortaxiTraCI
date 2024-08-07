@@ -25,7 +25,7 @@ model.startprob_ = state_probability
 model.transmat_ = transition_probability
 model.emissionprob_ = emission_probability
 
-from label_encoding import final_sequence, final_v_sequences
+from label_encoding import final_sequence
 
 observations_sequence = final_sequence.reshape(-1, 1)
 model.fit(observations_sequence)

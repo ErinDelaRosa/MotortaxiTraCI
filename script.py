@@ -5,7 +5,6 @@ import sys
 import traci._vehicle
 import traci._vehicletype
 
-from random import randrange
 if 'SUMO_HOME' in os.environ:
     sys.path.append(sys.path.append(os.path.join(os.environ['SUMO_HOME'], 'tools')))
 else:
