@@ -1,7 +1,7 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     
 
-    <vType id="motortaxi" vClass="taxi" personCapacity="1" guiShape="motorcycle" color="red" laneChangeModel="SL2015" minGap="1" length="2.0" width=".7" height="1.1" lcSublane="1.5" lcAssertive="1" latAlignment="nice" lcStrategic="0" lcKeepRight=".5" lcSpeedGain="0.09259578448943781" lcPushy="0.27229471564850105" lcSigma=".5" lcLookaheadLeft="1">
+    <vType id="motortaxi" vClass="taxi" personCapacity="1" guiShape="motorcycle" color="red" laneChangeModel="SL2015" minGap="1" length="2.0" width=".7" height="1.1" lcSublane="1.5" lcAssertive="1" latAlignment="nice" lcStrategic="0" lcKeepRight=".5" lcSpeedGain="0.34383710627938635" lcPushy="0.24786786297524468" lcSigma=".5" lcLookaheadLeft="1">
         <param key="has.taxi.device" value="true" />
         <param key="device.taxi.dropOffDuration" value="0" />
         <param key="device.taxi.end" value="10000" />

@@ -74,7 +74,7 @@ while step <= 10000:
 
     # Getting taxi fleet and reservations from people
     fleet = traci.vehicle.getTaxiFleet(0)
-    reservations = traci.person.getTaxiReservations(1)
+    reservations = traci.person.getTaxiReservations(1) # gets new reservations at current steps
 
     # Start of assigning motortaxis to passengers
     if queue and fleet:
@@ -82,19 +82,21 @@ while step <= 10000:
         queue.remove(winner)
         logging.append(winner) # Adding current passengers who has a taxi assigned to them (Logging purposes)
 
-
-
-
-
-    # Code below is for logging down event of when passengers started waiting, picked up, and dropped off
     # Adds every new reservation found to queue and logs it to a file
     if reservations:
         for i in reservations:
+            queue.append(i)
+
+            # logs when passenger started booking a motortaxi
             file = open("logging_" + str(i.persons[0]) + ".txt", "w")
             file.writelines("Started waiting at " + str(step) + "\n")
-            queue.append(i)
             file.close()
 
+
+
+
+
+    # Code below is all for logging down event of when passengers started waiting, picked up, and dropped off
     logging2 = [] # for removing items from logging
 
 

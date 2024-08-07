@@ -20,7 +20,7 @@ for x in root.findall('trip'):
 tree.write('motorcycle.xml')
 
 # fixing depart time of each car
-tree = ET.parse('osm.passenger.trips.xml')
+tree = ET.parse('osm.car.trips.xml')
 root = tree.getroot()
 value = 0
 print(len(root.findall('trip')))
