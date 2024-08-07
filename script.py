@@ -4,176 +4,189 @@ import sys
 
 import traci._vehicle
 import traci._vehicletype
+
+from random import randrange
 if 'SUMO_HOME' in os.environ:
     sys.path.append(sys.path.append(os.path.join(os.environ['SUMO_HOME'], 'tools')))
 else:
     sys.exit("Environment variable 'SUMO_HOME' not found")
 import traci
 
-from hmm import model
+
+from hmm import model # HMM model
 
 print(model.transmat_)
 print(model.emissionprob_)
 
-left = model.emissionprob_[0][4]
-right = model.emissionprob_[0][5]
 
-speedGain = left + right
-pushy = model.emissionprob_[0][2] + model.emissionprob_[0][3]
+# Getting lane changing and seepage values from HMM model
+speedGain = model.emissionprob_[0][4] + model.emissionprob_[0][5] # assigning the value to the lcspeedgain later on
+pushy = model.emissionprob_[0][2] + model.emissionprob_[0][3] # assigning the value to the lcPushy later on
+
 
 import xml.etree.ElementTree as ET
+
+# fixing depart time of each motorcycles
+tree = ET.parse('osm.motorcycle.trips.xml')
+root = tree.getroot()
+value = 0
+print(len(root.findall('trip')))
+for x in root.findall('trip'):
+    x.set("depart", str(value))
+    value += 5000/len(root.findall('trip')) # Dividend was originally based on steps
+tree.write('motorcycle.xml')
+
+# fixing depart time of each car
+tree = ET.parse('osm.passenger.trips.xml')
+root = tree.getroot()
+value = 0
+print(len(root.findall('trip')))
+for x in root.findall('trip'):
+    x.set("depart", str(value))
+    value += 5000/len(root.findall('trip')) # Dividend was originally based on steps 
+tree.write('car.xml') # output to car.xml
+
+# assigning the lcpushy and lcspeedgain value to the motortaxis
 tree = ET.parse('osm.motortaxi.trips.xml')
 root = tree.getroot()
-
-# for x in root:
-#     print(x.tag, x.attrib)
-
-print (root[0].attrib["lcSpeedGain"])
-
 root[0].set("lcSpeedGain", str(speedGain))
-
-print (root[0].attrib["lcSpeedGain"])
-
-print (root[0].attrib["lcPushy"])
-
 root[0].set("lcPushy", str(pushy))
-
-print (root[0].attrib["lcPushy"])
-# root[0].attrib["lcSpeedGain"] = speedGain
-
-tree.write('output.xml')
+tree.write('motortaxi.xml') # output to motortaxi.xml
 
 
 sumoBinary = "sumo-gui"
 sumoCmd = [sumoBinary, "-c", "osm.sumocfg", "-d", "200"] #replace osm.sumocfg to your cfg file
 
-#taxi part
-#def createMotortaxi(time):
-#    for i in range(0, 20, 5):
-        # declaring the name(unique), route(from demand.route.xml), type of vehicle(declared in demand.route.xml),
-        # depart time, and line
-#        traci.vehicle.add(f'motortaxi{i}', 'route0', 'motorcycle', depart=f'{time}', line='taxi')
-        
-#    fleet = traci.vehicle.getTaxiFleet(0) #taxi dispatch and fetch algo
-#    reservations = traci.person.getTaxiReservations(0)
-#    reservation_ids = [r.id for r in reservations]
-#    traci.vehicle.dispatchTaxi(fleet[0], reservation_ids[0])
-
-# Dispatching taxis to cater to people waiting at a bus stop
-#def emergencyTaxi(busstopID):
-    # getting a Id-list of people waiting at the busstop
-#    peopleWaiting = traci.busstop.getPersonIDs(busstopID)
-#    pickup = []
-    # creating a list with the taxi reservations
-#    for i, val in enumerate(peopleWaiting):
-#        pickup.append(traci.person.getTaxiReservations(0)[i].id)
-    # if one Taxi should pick up all customers, the list needs to clarify the drop off
-    # hence the pickup is extended by the order of drop offs
-    # pickup.extend(pickup)
-#    try:
-#        fleet = traci.vehicle.getTaxiFleet(0)
-#    except (traci.exceptions.FatalTraCIError):
-#        print("No unoccupied taxi-fleet!")
-    # dispatching the unoccupied taxis to pick up their designated customers
-#    for i, val in enumerate(peopleWaiting):
-#        traci.vehicle.dispatchTaxi(fleet[i], pickup[i])
-
-#motortaxi details
-#<vType id="motortaxi" vClass="motorcycle" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
-#    minGap="1.5" lcSublane="1.5" lcAssertive=".1" latAlignment="nice" lcStrategic="0" lcSpeedGain="0.606" 
-#    lcKeepRight=".5">
-#<trip id="motortaxi_test" type="motortaxi" begin="0.00" end="500" from="27662625#1" to="-704338387"/>
-
 traci.start(sumoCmd)
-step = 0
-queue = []
-# while traci.simulation.getMinExpectedNumber() > 0:
-while step <= 5000:
-    traci.simulationStep()
-    if step <= 100:
-        test=traci.vehicle.getIDList()
-        for x in test:
-            if x[:9] == "motortaxi":
-                # print(x)
-                traci.vehicle.setLength(x, 2.0)
-                traci.vehicle.setWidth(x, 0.7)
-                traci.vehicle.setHeight(x, 1.1)
-                traci.vehicle.setAccel(x, 6)
-                traci.vehicle.setDecel(x, 10)
-                traci.vehicle.setEmergencyDecel(x, 10)
-                traci.vehicle.setMaxSpeed(x, 60)
-                traci.vehicle.setLine(x, 'taxi')
-                
-    fleet = traci.vehicle.getTaxiFleet(0)
-    we = traci.person.getTaxiReservations(1)
 
-    # Logging
-    # ongoing = traci.vehicle.getTaxiFleet(2)
-    # motortaxi = traci.vehicle.getIDList()
-    # for x in motortaxi:
-    #     if x[:9] == "motortaxi":
-    #         for y in ongoing:
-    #             if x == y:
-    #                 print(x, " ")
-    #                 print("Lateral Lane Pos: ", traci.vehicle.getLateralLanePosition(x))
-    #                 print("Lane ID: ",traci.vehicle.getLaneID(x))
-    #                 print("Lane Index: ",traci.vehicle.getLaneIndex(x))
+def closest_Passenger(queue, fleet):
+    skip = False
+    driver = None
+    lowestDistance = 0
+    winner = None
 
+    for j in fleet:
+        # motortaxis usually stop when done dropping passengers so resumed
+        if traci.vehicle.getStopState(j) > 0:
+            traci.vehicle.resume(j)
+            skip = True # To skip the dispatch taxi since its being resumed (needs to reset)
+            break
 
-    # print(we)
-    print("Available ", fleet)
-    print(queue)
-    if queue and fleet:
-        driver = None
-        lowestDistance = 0
-        # area = None
-        winner = None
-        # list = []
-        # for i in queue:
-        #     if traci.person.getRoadID(i.persons[0]) not in list:
-        #         list.append(traci.person.getRoadID(i.persons[0]))
-        for j in fleet:
-            if driver == None:
+        for i in queue:
+            # Getting distance of each vehicle to every person in queue
+            distance = traci.simulation.getDistanceRoad(traci.vehicle.getRoadID(j),traci.vehicle.getLanePosition(j),traci.person.getRoadID(i.persons[0]),traci.person.getLanePosition(i.persons[0]))
+            if lowestDistance == 0: # if its the first iteration
+                lowestDistance = distance
+                winner = i
                 driver = j
-            for i in queue:
-                # if area == None:
-                #     area = traci.person.getRoadID(i.persons[0])
-                distance = traci.simulation.getDistanceRoad(traci.vehicle.getRoadID(j),traci.vehicle.getLanePosition(j),traci.person.getRoadID(i.persons[0]),traci.person.getLanePosition(i.persons[0]))
-                print("From vehicle ", j, " to ", i.persons[0], " Distance: ", distance)
-
-                if lowestDistance == 0:
-                    lowestDistance = distance
-                    winner = i
-                # print(distance, "<= ", lowestDistance)
-                if distance < lowestDistance:
-                    winner = i
-                    driver = j
+            elif distance < lowestDistance: # if current iteration is better 
+                lowestDistance = distance
+                winner = i
+                driver = j
 
 
-        traci.vehicle.dispatchTaxi(driver, winner.id)
+    if not skip:
+        # Dispatches a motortaxi to the passenger once shortest distance was calculated
+        traci.vehicle.dispatchTaxi(driver, [winner.id, winner.id]) 
+        # remove the passenger's reservation detail from the queue and add to logging
+    return winner
+
+def convert_To_Motortaxi(vehicle):
+    for x in vehicle:
+        if x[:9] == "motortaxi":
+            traci.vehicle.setLength(x, 2.0)
+            traci.vehicle.setWidth(x, 0.7)
+            traci.vehicle.setHeight(x, 1.1)
+            traci.vehicle.setAccel(x, 6)
+            traci.vehicle.setDecel(x, 10)
+            traci.vehicle.setEmergencyDecel(x, 10)
+            traci.vehicle.setMaxSpeed(x, 60)
+            traci.vehicle.setLine(x, 'taxi')
+
+step = 0
+queue = [] # queue of passengers to be picked up
+logging = [] # tracking passengers who are assigned a motortaxi
+wah = 100 # for observation purposes in the terminal
+while step <= 10000:
+    traci.simulationStep()
+
+    # Changing taxi vehicles to motorcycles
+    if step <= 100: # Only check steps 100 and below since all motortaxis were spawned early
+        convert_To_Motortaxi(traci.vehicle.getIDList())
+                
+
+    # Getting taxi fleet and reservations from people
+    fleet = traci.vehicle.getTaxiFleet(0)
+    reservations = traci.person.getTaxiReservations(1)
+
+    # Start of assigning motortaxis to passengers
+    if queue and fleet:
+        winner = closest_Passenger(queue, fleet)
         queue.remove(winner)
-    if we:
-        for i in we:
+        logging.append(winner) # Adding current passengers who has a taxi assigned to them (Logging purposes)
+
+    # Code below is for logging down event of when passengers started waiting, picked up, and dropped off
+
+
+
+
+    # Adds every new reservation found to queue and logs it to a file
+    if reservations:
+        for i in reservations:
+            file = open("logging_" + str(i.persons[0]) + ".txt", "w")
+            file.writelines("Started waiting at " + str(step) + "\n")
             queue.append(i)
+            file.close()
+
+    logging2 = [] # for removing items from logging
 
 
+    # logging to check when a passenger has been picked up and dropped off
+    for i in logging:
+        # if the passenger has not been picked up yet
+        go = False 
+        with open("logging_" + str(i.persons[0]) + ".txt", "r") as f:
+            text = f.readlines()[-1][0:6]
+            if text == "Starte":
+                go = True
+
+        
+        remove=False # boolean for if a passenger has been dropped off
+        
+        for j in traci.person.getTaxiReservations(8):
+            if i.group != j.group and not go: # if its finally not in the "picked up state" from getTaxiReservations(8), means it was dropped off
+                remove=True
+            elif i.group == j.group and not go: # if its still in, continously update the "Dropped at x"
+                remove=False
+                with open("logging_" + str(i.persons[0]) + ".txt", "r") as f:
+                    data = f.readlines()
+                if data[-1][0:6] == "Picked":
+                    data.append("Dropped at " + str(step) + "\n")
+                else:
+                    data[2] = "Dropped at " + str(step) + "\n"
+                with open("logging_" + str(i.persons[0]) + ".txt", "w") as f:
+                    f.writelines(data)
+                break
+
+        if remove: # if true, adds to logging2 (which is the list holding items to be removed from logging)
+            logging2.append(i)
+            print(step, "  ", i.group)
+            print("SOMETHING WAS DROPPED")
+
+        # To check if a passenger was picked up
+        for j in traci.person.getTaxiReservations(8):
+            if i.group == j.group and go:
+                # print(i.group,"  ",step)
+                with open("logging_" + str(i.persons[0]) + ".txt", "a") as f:
+                    f.writelines("Picked at " + str(step) + "\n")
+                # print(step, "  ", i.group)
+                # print("SOMETHING WAS PICKED UP")
+
+    # removing item in logging
+    for i in logging2:
+        logging.remove(i)
     
 
 
-    # reservations = traci.person.getTaxiReservations(1)
-    # reservation_ids = [r.id for r in reservations]
-    # if reservation_ids and fleet:
-    #     traci.vehicle.dispatchTaxi(fleet[0], reservation_ids[0]
-
-
-    # traci.vehicle.setVehicleClass
-    #changing the motortaxi vehicle properties 
-    #traci.vehicle.setLaneChangeMode("motortaxi_test", 0b010101100101)
-    #traci.vehicle.setParameter("motortaxi_test", changeSublane, 1.5)
-    #traci.vehicle.setParameter("motortaxi_test", "lcSpeedGain", speedGain)
-    
-    step += 1 #required
-    
-    
-
+    step += 1 # goes to next step
 traci.close()

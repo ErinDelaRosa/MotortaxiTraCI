@@ -1,79 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- <configuration>
-    <net-file value="C:\Users\HP_Demo\Sumo\2024-04-02-10-25-41\osm.net.xml.gz"/>
-    <output-trip-file value="C:\Users\HP_Demo\Sumo\2024-04-02-10-25-41\osm.motorcycle.trips.xml"/>
-    <route-file value="C:\Users\HP_Demo\Sumo\2024-04-02-10-25-41\osm.motorcycle.rou.xml"/>
-    <prefix value="motorcycle"/>
-    <trip-attributes value="departLane=&quot;best&quot;"/>
-    <fringe-start-attributes value="departSpeed=&quot;max&quot;"/>
-    <vehicle-class value="motorcycle"/>
-    <fringe-factor value="10"/>
-    <vclass value="motorcycle"/>
-    <via-edge-types value="highway.motorway,highway.motorway_link,highway.trunk_link,highway.primary_link,highway.secondary_link,highway.tertiary_link"/>
-    <max-distance value="1200.0"/>
-    <remove-loops value="True"/>
-    <validate value="True"/>
-    <insertion-density value="100.0"/>
-</configuration> -->
+
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     
-    <!--<route id="route0" edges="303810124 middle end rend"/>-->
 
     <vType id="motortaxi" vClass="taxi" personCapacity="1" guiShape="motorcycle" color="red" laneChangeModel="SL2015" 
     minGap="1" length="2.0" width=".7" height="1.1" 
     lcSublane="1.5" lcAssertive="1" latAlignment="nice" lcStrategic="0" 
-    lcKeepRight=".5" lcSpeedGain="0" lcPushy="0" lcSigma=".5" lcLookaheadLeft="0">
+    lcKeepRight=".5" lcSpeedGain="0" lcPushy="0" lcSigma=".5" lcLookaheadLeft="1" >
         <param key="has.taxi.device" value="true"/>
-        <param key="device.taxi.dropOffDuration" value="5"/>
+        <param key="device.taxi.dropOffDuration" value="0"/>
+        <param key="device.taxi.end" value="10000"/>
     </vType>
     <!-- lcSpeedGain uses the probabilities of 1-Left and 1-Right
     Make routes for motortaxi roaming and motortaxi pickup-->
 
-    <!-- <route id="route0" color="1,1,0" from="7661474" to="86720809#3"/> -->
-    <!-- <vehicle id="motortaxi_latest" type="motortaxi" depart="0" color="1,0,0"/> -->
-    <!--validation-->
-    <vehicle id="motortaxivalidation" type="motortaxi" depart="30" color="1,0,0">
+    <!-- validation-->
+    <!-- <vehicle id="motortaxivalidation" type="motortaxi" depart="30" color="1,0,0">
         <route edges="571044351#0 571044351#2 761304864 34155649#1 220840484#1 761304863#1 761304863#2 
         761304863#3 761304863#4 711293098 220840489#0 220840489#1 220840489#2 711144689#0 711230109
-        671307953#0 671307953#1 702465338#1 114695854#1 108060096#1 108060096#2 676674453 132684529#0
-        31661773#1 31661773#2 39077073#1 38062536#0 38062536#1 38062536#2"/>
-    </vehicle>
+        671307953#0 671307953#1 702465338#1 114695854#1 
+        31091043#1 31091043#2 31091043#4 38318883#0 38318883#1 38343252#1
+        39077073#1 38062536#0 38062536#1 38062536#2"/>
+    </vehicle> -->
     
-    <!-- <vehicle id="motortaxi1" type="motortaxi" depart="0" color="1,0,0">
+    <vehicle id="motortaxi1" type="motortaxi" depart="0" color="1,0,0">
         <route edges="712668428"/>
     </vehicle>
     <vehicle id="motortaxi2" type="motortaxi" depart="0" color="1,0,0">
         <route edges="27831120"/>
-    </vehicle> -->
-    <!-- <trip id="motortaxi2" type="motortaxi" depart="0" color="1,0,0" from="132684527#6"/> -->
-    <!-- <trip id="motortaxi_test" type="motortaxi" depart="0" color="1,0,0" from="712668428" to="86720809#1"/>
-    <trip id="motortaxi_test1" type="motortaxi" depart="0" color="1,0,0" from="738574701" to="22598001#1"/>
-    <trip id="motortaxi_test2" type="motortaxi" depart="0" color="1,0,0" from="27661429#1" to="22598114#3"/>
-    <trip id="motortaxi_test3" type="motortaxi" depart="0" color="1,0,0" from="-22604033#2" to="27661429#1"/>
-    <trip id="motortaxi_test4" type="motortaxi" depart="0" color="1,0,0" from="705241295" to="27661474"/>
-    <trip id="motortaxi_test5" type="motortaxi" depart="0" color="1,0,0" from="712411951" to="38319207"/>
-    <trip id="motortaxi_test6" type="motortaxi" depart="0" color="1,0,0" from="-22604033#1" to="712411951"/>
-    <trip id="motortaxi_test7" type="motortaxi" depart="0" color="1,0,0" from="31661773#2" to="4086409#2"/>
-    <trip id="motortaxi_test8" type="motortaxi" depart="0" color="1,0,0" from="22729201#1" to="701612812#0"/> -->
-    <!-- glorietta 2 -->
-    <!-- <person id="passenger1" depart="0.00" color="blue" departPos="48">
-        <walk from="27662625#1" busStop="bs_0"/>
-        <ride from="27662625#1" to="132684530#2" lines="taxi"/>
-    </person> -->
-    <!-- <person id="passenger2" depart="30.00" color="blue">
-        <walk from="27662625#1" busStop="bs_0"/>
-        <ride from="27662625#1" to="22598132#2" lines="taxi"/>
-    </person> -->
-    <!-- glorietta 4 -->
-    <!-- <person id="passenger2" depart="0.00" color="blue" departPos="11">
-        <walk from="27831120" busStop="bs_1"/>
-        <ride from="27831120" to="705241293" lines="taxi"/>
-    </person> -->
-    <!-- sm makati -->
-    <!--<person id="passenger4" depart="70.00" color="blue">
-        <walk from="712682734" busStop="bs_2"/>
-        <ride from="712682734" to="31091043#1" lines="taxi"/>
-    </person>-->
+    </vehicle>
+    <vehicle id="motortaxi3" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="31091043#4"/>
+    </vehicle>
 
-    
+
+    <vehicle id="motortaxi4" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="22697402#8"/>
+    </vehicle>
+    <vehicle id="motortaxi5" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="38062536#2"/>
+    </vehicle>
+    <vehicle id="motortaxi6" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="712417479"/>
+    </vehicle>
+
+    <!-- <vehicle id="motortaxi7" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="645172763"/>
+    </vehicle>
+    <vehicle id="motortaxi8" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="27661429#1"/>
+    </vehicle>
+    <vehicle id="motortaxi9" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="706191003#2"/>
+    </vehicle> -->
+
 </routes>

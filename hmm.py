@@ -30,11 +30,19 @@ from labelencoding import final_sequence, final_v_sequences
 observations_sequence = final_sequence.reshape(-1, 1)
 model.fit(observations_sequence)
 model.predict(observations_sequence)
-print(model.score(observations_sequence,[14,11,28,43,46,37,119,27,89]))
-print(model.score(final_v_sequences.reshape(-1,1),[27,84,111,42]))
 
 print(model.transmat_)
 print(model.emissionprob_)
+
+
+
+
+# print(model.score(observations_sequence,[14,11,28,43,46,37,119,27,89]))
+# print(model.decode(observations_sequence, lengths=[14,11,28,43,46,37,119,27,89], algorithm='viterbi')[0])
+# print(model.predict(observations_sequence, [14,11,28,43,46,37,119,27,89]))
+# print(model.score(final_v_sequences.reshape(-1,1),[27,84,111,42]))
+# print(model.decode(final_v_sequences.reshape(-1,1), lengths=[27,84,111,42], algorithm='viterbi')[0])
+# print(model.predict(final_v_sequences.reshape(-1,1), [27,84,111,42]))
 
 #Transmat: [V->V, V->S] [S->V, S->S] 
 #Emission: V[Stop, Go, LS, RS, 1L, 1R] S[Stop, Go, LS, RS, 1L, 1R]

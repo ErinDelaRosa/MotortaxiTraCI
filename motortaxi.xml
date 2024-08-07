@@ -1,0 +1,37 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    
+
+    <vType id="motortaxi" vClass="taxi" personCapacity="1" guiShape="motorcycle" color="red" laneChangeModel="SL2015" minGap="1" length="2.0" width=".7" height="1.1" lcSublane="1.5" lcAssertive="1" latAlignment="nice" lcStrategic="0" lcKeepRight=".5" lcSpeedGain="0.4775364699315836" lcPushy="0.2270154580289816" lcSigma=".5" lcLookaheadLeft="1">
+        <param key="has.taxi.device" value="true" />
+        <param key="device.taxi.dropOffDuration" value="0" />
+        <param key="device.taxi.end" value="10000" />
+    </vType>
+    
+
+    
+    
+    
+    <vehicle id="motortaxi1" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="712668428" />
+    </vehicle>
+    <vehicle id="motortaxi2" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="27831120" />
+    </vehicle>
+    <vehicle id="motortaxi3" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="31091043#4" />
+    </vehicle>
+
+
+    <vehicle id="motortaxi4" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="22697402#8" />
+    </vehicle>
+    <vehicle id="motortaxi5" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="38062536#2" />
+    </vehicle>
+    <vehicle id="motortaxi6" type="motortaxi" depart="0" color="1,0,0">
+        <route edges="712417479" />
+    </vehicle>
+
+    
+
+</routes>

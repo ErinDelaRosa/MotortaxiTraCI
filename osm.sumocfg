@@ -7,7 +7,7 @@
 
     <input>
         <net-file value="Stops.net.xml.gz"/>
-        <route-files value="osm.bus.trips.xml, osm.motorcycle.trips.xml, osm.passenger.trips.xml, output.xml"/> <!--, passengers.rou.xml-->
+        <route-files value="osm.bus.trips.xml, motorcycle.xml, car.xml, motortaxi.xml, passengers.xml"/> <!--, passengers.rou.xml-->
         <additional-files value="osm.poly.xml.gz, extra.add.xml"/>
         <!-- for Taxi stuff if done
         <no-step-log value="True"/>
