@@ -53,7 +53,9 @@
 -->
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-    <vType id="bus_bus" vClass="bus"/>
+    <vType id="bus_bus" vClass="bus" />
+<!--
+    <trip id="bus0" type="bus_bus" depart="0.00" departLane="best" departSpeed="max" from="552769056" to="-109033611#0"/>
     <trip id="bus2" type="bus_bus" depart="1.08" departLane="best" from="-645172765#0" to="547665432#1"/>
     <trip id="bus5" type="bus_bus" depart="2.70" departLane="best" from="706054788#0" to="25794650"/>
     <trip id="bus7" type="bus_bus" depart="3.78" departLane="best" from="547667543#0" to="32946689#1"/>
@@ -396,7 +398,7 @@
     <trip id="bus504" type="bus_bus" depart="272.05" departLane="best" departSpeed="max" from="571044351#0" to="22648376#4"/>
     <trip id="bus506" type="bus_bus" depart="273.13" departLane="best" departSpeed="max" from="144850884#0" to="704356345#1"/>
     <trip id="bus509" type="bus_bus" depart="274.75" departLane="best" departSpeed="max" from="704887558#0" to="-562968525#0"/>
-    <!-- <trip id="bus511" type="bus_bus" depart="275.83" departLane="best" from="22648395#1" to="-738574688#1"/>
+    <trip id="bus511" type="bus_bus" depart="275.83" departLane="best" from="22648395#1" to="-738574688#1"/>
     <trip id="bus512" type="bus_bus" depart="276.37" departLane="best" from="179384091#2" to="1088980782"/>
     <trip id="bus513" type="bus_bus" depart="276.91" departLane="best" departSpeed="max" from="-4940456#4" to="25794650"/>
     <trip id="bus514" type="bus_bus" depart="277.45" departLane="best" from="-22729195#1" to="25794650"/>
@@ -427,8 +429,9 @@
     <trip id="bus552" type="bus_bus" depart="297.96" departLane="best" departSpeed="max" from="-570477020" to="-4940470"/>
     <trip id="bus553" type="bus_bus" depart="298.50" departLane="best" from="761304863#4" to="25784325#1"/>
     <trip id="bus554" type="bus_bus" depart="299.04" departLane="best" from="-712684280#0" to="-22729184#0"/>
-    <trip id="bus555" type="bus_bus" depart="299.58" departLane="best" departSpeed="max" from="-22648376#4" to="705241296#4"/>
-    <trip id="bus556" type="bus_bus" depart="300.12" departLane="best" departSpeed="max" from="-22729190#1" to="701644612"/>
+    <trip id="bus555" type="bus_bus" depart="299.58" departLane="best" departSpeed="max" from="-22648376#4" to="705241296#4"/>-->
+
+    <!--<trip id="bus556" type="bus_bus" depart="300.12" departLane="best" departSpeed="max" from="-22729190#1" to="701644612"/>
     <trip id="bus557" type="bus_bus" depart="300.66" departLane="best" departSpeed="max" from="704887558#0" to="706191003#0"/>
     <trip id="bus558" type="bus_bus" depart="301.20" departLane="best" departSpeed="max" from="-119300654" to="1088980782"/>
     <trip id="bus559" type="bus_bus" depart="301.74" departLane="best" from="700695452#0" to="-22729184#0"/>

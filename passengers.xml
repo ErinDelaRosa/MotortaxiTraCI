@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <person id="gl2_passenger1" depart="0.00" color="blue" departPos="48">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="132684530#2" lines="taxi"/>
+    </person>
+
+
+    <person id="sm_passenger1" depart="5.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="31091043#1" lines="taxi"/>
+    </person>
+
+
+    <person id="gl4_passenger1" depart="10.00" color="blue" departPos="11">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="705241293" lines="taxi"/>
+    </person>
+
+    <person id="sm_passenger2" depart="15.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="22729180#0" lines="taxi"/>
+    </person>
+
+    <person id="gl4_passenger2" depart="20.00" color="blue">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="4083183#0" lines="taxi"/>
+    </person>
+
+    <person id="gl4_passenger3" depart="23.00" color="blue">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="17152532#0" lines="taxi"/>
+    </person>
+
+    <person id="sm_passenger3" depart="25.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="-22648395#4" lines="taxi"/>
+    </person>
+    
+    <person id="gl2_passenger2" depart="30.00" color="blue">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="22598132#2" lines="taxi"/>
+    </person>
+
+
+
+    <person id="sm_passenger4" depart="34.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="86714582#0" lines="taxi"/>
+    </person>
+
+    <person id="sm_passenger5" depart="42.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="658325610#1" lines="taxi"/>
+    </person>
+
+    <person id="gl2_passenger3" depart="43.00" color="blue">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="22604025#1" lines="taxi"/>
+    </person>
+
+
+    <person id="gl4_passenger4" depart="45.00" color="blue">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="5018753#1" lines="taxi"/>
+    </person>
+
+    <person id="gl4_passenger5" depart="54.00" color="blue">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="702461325#0" lines="taxi"/>
+    </person>
+
+    <person id="sm_passenger6" depart="60.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="22598114#3" lines="taxi"/>
+    </person>
+
+    <person id="gl4_passenger6" depart="63.00" color="blue">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="22598132#3" lines="taxi"/>
+    </person>
+
+    <person id="sm_passenger7" depart="66.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="38318883#1" lines="taxi"/>
+    </person>
+
+    
+    <person id="gl2_passenger4" depart="76.00" color="blue">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="761304865#3" lines="taxi"/>
+    </person>
+
+    <person id="sm_passenger8" depart="80.00" color="blue">
+        <walk from="712682734" busStop="bs_2"/>
+        <ride from="712682734" to="17152532#1" lines="taxi"/>
+    </person>
+
+    <person id="gl4_passenger7" depart="83.00" color="blue">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="18018451#9" lines="taxi"/>
+    </person>
+
+    <person id="gl2_passenger5" depart="88.00" color="blue">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="86714582#1" lines="taxi"/>
+    </person>
+
+
+
+    <person id="gl2_passenger6" depart="90.00" color="blue">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="-4940451#0" lines="taxi"/>
+    </person>
+    
+
+    <person id="gl4_passenger8" depart="91.00" color="blue">
+        <walk from="27831120" busStop="bs_1"/>
+        <ride from="27831120" to="22598132#3" lines="taxi"/>
+    </person>
+
+
+    <person id="gl2_passenger7" depart="95.00" color="blue">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="17152412#1" lines="taxi"/>
+    </person>
+
+    <person id="gl2_passenger8" depart="99.00" color="blue">
+        <walk from="27662625#1" busStop="bs_0"/>
+        <ride from="27662625#1" to="5018756#0" lines="taxi"/>
+    </person>
+</routes>
