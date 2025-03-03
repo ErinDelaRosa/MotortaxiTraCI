@@ -88,7 +88,7 @@ while step <= 10000:
             queue.append(i)
 
             # logs when passenger started booking a motortaxi
-            file = open("logging_" + str(i.persons[0]) + ".txt", "w")
+            file = open("trips/logging_" + str(i.persons[0]) + ".txt", "w")
             file.writelines("Started waiting at " + str(step) + "\n")
             file.close()
 
@@ -104,7 +104,7 @@ while step <= 10000:
     for i in logging:
         # if the passenger has not been picked up yet
         go = False 
-        with open("logging_" + str(i.persons[0]) + ".txt", "r") as f:
+        with open("trips/logging_" + str(i.persons[0]) + ".txt", "r") as f:
             text = f.readlines()[-1][0:6]
             if text == "Starte":
                 go = True
@@ -117,13 +117,13 @@ while step <= 10000:
                 remove=True
             elif i.group == j.group and not go: # if its still in, continously update the "Dropped at x"
                 remove=False
-                with open("logging_" + str(i.persons[0]) + ".txt", "r") as f:
+                with open("trips/logging_" + str(i.persons[0]) + ".txt", "r") as f:
                     data = f.readlines()
                 if data[-1][0:6] == "Picked":
                     data.append("Dropped at " + str(step) + "\n")
                 else:
                     data[2] = "Dropped at " + str(step) + "\n"
-                with open("logging_" + str(i.persons[0]) + ".txt", "w") as f:
+                with open("trips/logging_" + str(i.persons[0]) + ".txt", "w") as f:
                     f.writelines(data)
                 break
 
@@ -136,7 +136,7 @@ while step <= 10000:
         for j in traci.person.getTaxiReservations(8):
             if i.group == j.group and go:
                 # print(i.group,"  ",step)
-                with open("logging_" + str(i.persons[0]) + ".txt", "a") as f:
+                with open("trips/logging_" + str(i.persons[0]) + ".txt", "a") as f:
                     f.writelines("Picked at " + str(step) + "\n")
                 # print(step, "  ", i.group)
                 # print("SOMETHING WAS PICKED UP")
